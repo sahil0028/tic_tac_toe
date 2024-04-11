@@ -4,6 +4,7 @@ const Persons = () => {
     const [turn,setTurn] =useState(1)
   const [matrix,setMatrix] = useState([[0,0,0],[0,0,0],[0,0,0]])
   const [state,setState] = useState('start')
+
   const winner = useRef(false)
 
   const totalTurns = useRef(0)
@@ -13,6 +14,7 @@ const Persons = () => {
     setMatrix([[0,0,0],[0,0,0],[0,0,0]])
     setState('start')
     totalTurns.current=0
+    winner.current=false
   }
 
   const handleClick=(e)=>{
