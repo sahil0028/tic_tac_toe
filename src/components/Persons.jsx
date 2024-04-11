@@ -93,7 +93,6 @@ const Persons = () => {
     if(totalTurns.current===9){
       console.log('turns full')      
       setState('finish')
-      winner.current=true
       return
     }
   },[matrix])
@@ -105,11 +104,12 @@ const Persons = () => {
       {state !== "finish" ? (
         <h1 className="text-3xl  mb-4">{turn == 1 ? <span>1st</span> : <span>2nd</span>} Person turn</h1>
       ) : (
+          // console.log(winner.current,'--')
           winner.current?<h1 className="text-3xl ">
             Winner: {turn == 1 ?(<span>2nd Person</span>):<span>1st Person</span>} 
           </h1>:
           <h1 className="text-3xl ">
-            Winner: {turn == 1 ? (<span>2nd Person</span>):<span>1st Person</span>} 
+            Draw 
           </h1>
       )}
       <div className="flex flex-col sm:items-center sm:w-screen">

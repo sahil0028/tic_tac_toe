@@ -6,6 +6,7 @@ const Pvcomputer = () => {
   const [state,setState] = useState('start')
   const rembox = useRef(['00','01','02','10','11','12','20','21','22'])
   const [comp,setComp] = useState(false)
+  const winner = useRef(false)
 
   const totalTurns = useRef(0)
 
@@ -16,6 +17,7 @@ const Pvcomputer = () => {
     setComp(false)
     rembox.current=['00','01','02','10','11','12','20','21','22']
     totalTurns.current=0
+    winner.current(false)
 
   }
 
@@ -83,6 +85,7 @@ const Pvcomputer = () => {
       if (a===b && b===c && a!=0){
         setState('finish')
         console.log('row winner',a,b,c)
+        winner.current=true
         return
       }
     }
@@ -97,6 +100,8 @@ const Pvcomputer = () => {
       if (a===b && b===c && a!=0){
         setState('finish')
         console.log('col winner',a,b,c)
+        winner.current=true
+        return
       }
     }
     // checking diagonally
@@ -107,6 +112,8 @@ const Pvcomputer = () => {
       // setState('finish')
       setState('finish')
       console.log('diagonal winner',aa,bb,cc)
+      winner.current=true
+      return
     }
     aa=matrix[0][2]
     bb=matrix[1][1]
@@ -115,6 +122,8 @@ const Pvcomputer = () => {
       // setState('finish')
       setState('finish')
       console.log('diagonal winner',aa,bb,cc)
+      winner.current=true
+      return
     }
     
     // checking if game is drawn
@@ -156,9 +165,13 @@ const Pvcomputer = () => {
       {state !== "finish" ? (
         <h1 className="text-3xl  mb-4">{turn == 1 ? <span>1st</span> : <span>2nd</span>} Person turn</h1>
       ) : (
-        <h1 className="text-3xl ">
-          Winner: {turn == 1 ? (<span>2nd Person</span>):totalTurns.current==9?<span> None draw</span> : <span>1st Person</span>} 
-        </h1>
+          // console.log(winner.current,'--')
+          winner.current?<h1 className="text-3xl ">
+            Winner: {turn == 1 ?(<span>2nd Person</span>):<span>1st Person</span>} 
+          </h1>:
+          <h1 className="text-3xl ">
+            Draw 
+          </h1>
       )}
       <div className="flex flex-col sm:items-center sm:w-screen">
         <div className="flex sm:w-11/12">
