@@ -1,7 +1,8 @@
 import React from "react";
 import {useEffect, useRef, useState } from "react";
+
 const Persons = () => {
-    const [turn,setTurn] =useState(1)
+  const [turn,setTurn] =useState(1)
   const [matrix,setMatrix] = useState([[0,0,0],[0,0,0],[0,0,0]])
   const [state,setState] = useState('start')
 
@@ -45,10 +46,10 @@ const Persons = () => {
       const a=matrix[i][0]
       const b=matrix[i][1]
       const c=matrix[i][2]
-      console.log('row checking')
-      console.log(a,b,c)
-      console.log('-',matrix[i][0],matrix[i][1],matrix[i][2])
-      console.log('--',matrix[0])
+      // console.log('row checking')
+      // console.log(a,b,c)
+      // console.log('-',matrix[i][0],matrix[i][1],matrix[i][2])
+      // console.log('--',matrix[0])
       if (a===b && b===c && a!=0){
         setState('finish')
         console.log('row winner',a,b,c)
@@ -98,11 +99,9 @@ const Persons = () => {
       return
     }
   },[matrix])
+
   return (
-    // <div className="min-h-screen bg-red-500 text-center gap-y-4  flex flex-col justify-center items-center ">
     <div className="">
-      {/* 1row */}
-      {/* <h1 className="text-3xl ">Human {turn} turn</h1> */}
       {state !== "finish" ? (
         <h1 className="text-3xl  mb-4">{turn == 1 ? <span>1st</span> : <span>2nd</span>} Person turn</h1>
       ) : (
