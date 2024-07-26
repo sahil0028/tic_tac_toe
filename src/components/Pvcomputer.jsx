@@ -17,7 +17,7 @@ const Pvcomputer = () => {
     setComp(false)
     rembox.current=['00','01','02','10','11','12','20','21','22']
     totalTurns.current=0
-    winner.current(false)
+    winner.current=false
 
   }
 
@@ -36,7 +36,7 @@ const Pvcomputer = () => {
       if (index > -1) {
         rembox.current.splice(index, 1);
       }
-      console.log(rembox.current)
+      // console.log(rembox.current)
 
       // console.log(rembox.pop(e.target.value))
       setMatrix(
@@ -53,7 +53,7 @@ const Pvcomputer = () => {
 
   useEffect(()=>{
     if(turn == 2 && state!='finish'){
-      console.log('in if useEffect')
+      // console.log('in if useEffect')
       const randomInd = Math.ceil(Math.random()*rembox.current.length)-1
       // console.log(rembox)
       const value=rembox.current[randomInd]
@@ -70,13 +70,12 @@ const Pvcomputer = () => {
       )
       totalTurns.current+=1
       turn==1?setTurn(2):setTurn(1)
-      console.log(matrix)
+      // console.log(matrix)
     }
     setComp(false)
   },[comp])
 
   const findSol=()=>{
-    console.log(matrix)
     for(let i=0;i<3;i++){
       const a=matrix[i][0]
       const b=matrix[i][1]
@@ -84,7 +83,7 @@ const Pvcomputer = () => {
       
       if (a===b && b===c && a!=0){
         setState('finish')
-        console.log('row winner',a,b,c)
+        // console.log('row winner',a,b,c)
         winner.current=true
         return
       }
@@ -99,7 +98,7 @@ const Pvcomputer = () => {
       // console.log(a,b,c)
       if (a===b && b===c && a!=0){
         setState('finish')
-        console.log('col winner',a,b,c)
+        // console.log('col winner',a,b,c)
         winner.current=true
         return
       }
@@ -111,7 +110,7 @@ const Pvcomputer = () => {
     if (aa===bb && bb===cc && aa!=0){
       // setState('finish')
       setState('finish')
-      console.log('diagonal winner',aa,bb,cc)
+      // console.log('diagonal winner',aa,bb,cc)
       winner.current=true
       return
     }
@@ -121,38 +120,17 @@ const Pvcomputer = () => {
     if (aa===bb && bb===cc && aa!=0){
       // setState('finish')
       setState('finish')
-      console.log('diagonal winner',aa,bb,cc)
+      // console.log('diagonal winner',aa,bb,cc)
       winner.current=true
       return
     }
     
     // checking if game is drawn
     if(totalTurns.current===9){
-      console.log('turns full')      
+      // console.log('turns full')      
       // setState('finish')
       setState('finish')
     }
-    console.log(turn)
-    // if(turn == 2 && state!='finish'){
-    //   console.log('in if useEffect')
-    //   const randomInd = Math.ceil(Math.random()*rembox.current.length)-1
-    //   // console.log(rembox)
-    //   const value=rembox.current[randomInd]
-    //   if (randomInd > -1) {
-    //     rembox.current.splice(randomInd, 1);
-    //   }
-    //   // console.log(value)
-    //   setMatrix(
-    //     (prevArray) => {
-    //       const newArray = [...prevArray];
-    //       newArray[Number(value[0])][Number(value[1])] = turn;
-    //       return newArray;
-    //     }
-    //   )
-    //   totalTurns.current+=1
-    //   turn==1?setTurn(2):setTurn(1)
-    //   console.log(matrix)
-    // }
     setComp(true)
   }
   useEffect(()=>{

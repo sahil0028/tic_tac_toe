@@ -20,7 +20,7 @@ const Persons = () => {
 
   const handleClick=(e)=>{
     // Updating matrix
-    console.log(state)
+    // console.log(state)
     if(state==='finish'){
       return
     }
@@ -41,7 +41,7 @@ const Persons = () => {
   useEffect(()=>{
     // checking winner alredy win or not
     // checking in every row
-    console.log(matrix)
+    // console.log(matrix)
     for(let i=0;i<3;i++){
       const a=matrix[i][0]
       const b=matrix[i][1]
@@ -52,7 +52,7 @@ const Persons = () => {
       // console.log('--',matrix[0])
       if (a===b && b===c && a!=0){
         setState('finish')
-        console.log('row winner',a,b,c)
+        // console.log('row winner',a,b,c)
         winner.current=true
         return
       }
@@ -67,7 +67,7 @@ const Persons = () => {
       // console.log(a,b,c)
       if (a===b && b===c && a!=0){
         setState('finish')
-        console.log('col winner',a,b,c)
+        // console.log('col winner',a,b,c)
         winner.current=true
         return
       }
@@ -78,7 +78,7 @@ const Persons = () => {
     let cc=matrix[2][2]
     if (aa===bb && bb===cc && aa!=0){
       setState('finish')
-      console.log('diagonal winner',aa,bb,cc)
+      // console.log('diagonal winner',aa,bb,cc)
       winner.current=true
       return
     }
@@ -87,14 +87,14 @@ const Persons = () => {
     cc=matrix[2][0]
     if (aa===bb && bb===cc && aa!=0){
       setState('finish')
-      console.log('diagonal winner',aa,bb,cc)
+      // console.log('diagonal winner',aa,bb,cc)
       winner.current=true
       return
     }
     
     // checking if game is drawn
     if(totalTurns.current===9){
-      console.log('turns full')      
+      // console.log('turns full')      
       setState('finish')
       return
     }

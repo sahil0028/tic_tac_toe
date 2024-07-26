@@ -23,7 +23,7 @@ const Realtime = () => {
   const socket = useSocket();
 
   const handleclicked = () => {
-    console.log("pointer event working");
+    // console.log("pointer event working");
   };
 
   useEffect(() => {

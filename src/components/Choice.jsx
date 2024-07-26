@@ -29,12 +29,12 @@ const Choice = ({changeOpp}) => {
             aria-invalid="false"
             style={{}}
             defaultChecked
-            onClick={()=>changeOpp(true)}
+            onClick={()=>changeOpp(1)}
           />
           <label htmlFor="BannerType1" className="">
             {/* <i className="fa fa-image" /> */}
             <img src={Img} className="fa fa-image h-12 ml-4" alt="" />
-            <div className="font-semibold">Computer</div>
+            <span className="font-semibold">Computer</span>
           </label>
         </p>
         <p className="radioOption-Item">
@@ -46,12 +46,28 @@ const Choice = ({changeOpp}) => {
             className="ng-valid ng-dirty ng-touched ng-empty"
             aria-invalid="false"
             style={{}}
-            onClick={()=>changeOpp(false)}
+            onClick={()=>changeOpp(2)}
           />
           <label htmlFor="BannerType2">
             {/* <i className="fa fa-image" /> */}
             <img src={Img2} className="fa fa-image h-12 ml-4" alt="" />
-            <div className="font-semibold">Friend</div>
+            <span className="font-semibold">Friend</span>
+          </label>
+        </p>
+        <p className="radioOption-Item">
+          <input
+            type="radio"
+            name="BannerTypes"
+            id="BannerType3"
+            defaultValue="false"
+            className="ng-valid ng-dirty ng-touched ng-empty"
+            aria-invalid="false"
+            style={{}}
+            onClick={()=>changeOpp(3)}
+          />
+          <label htmlFor="BannerType3">
+            <img src={Img2} className="fa fa-image h-12 ml-4" alt="" />
+            <span className="font-semibold">Online</span>
           </label>
         </p>
       </div>
