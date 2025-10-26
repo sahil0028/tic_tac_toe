@@ -1,5 +1,5 @@
 const { json } = require("express")
-const { INIT_GAME,MOVE ,FINISH} = require("./messages")
+const { INIT_GAME,MOVE ,FINISH, DRAW} = require("./messages")
 const Game = require("./Game")
 
 module.exports = class GameManager {
@@ -39,6 +39,12 @@ module.exports = class GameManager {
                 else{
                     console.log("Pending user set to", socket.id);
                     this.pendingUser = socket
+                    socket.send(JSON.stringify({type:'Searching for opponent',
+                        payload:{
+                            // winner:'none',
+                            // board:this.board
+                        }
+                    }))
                 }
             }
             if(message.type === MOVE){

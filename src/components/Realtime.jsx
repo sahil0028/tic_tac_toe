@@ -36,6 +36,11 @@ const Realtime = () => {
       // console.log('event.data',event.data)
       const { type, payload } = JSON.parse(event.data);
       // console.log('payload type-',type)
+
+      if (type==='Searching for opponent'){
+        setState('searching')
+      }
+
       if (type === INIT_GAME) {
         // console.log('init_game ponts',payload.color)
         if (payload.color === "X") {
@@ -99,6 +104,11 @@ const Realtime = () => {
     <div className={``}>
       {state == "start" ? (
         <h1 className="text-3xl  mb-4">click play to start</h1>
+      ): state === "searching" ? (
+        // <h1 className="text-3xl  mb-4">{turn == 1 ? <span>1st</span> : <span>2nd</span>} Person turn</h1>
+        <h1 className="text-3xl  mb-4">
+          Searching for opponent
+        </h1>
       ) : state !== "finish" ? (
         // <h1 className="text-3xl  mb-4">{turn == 1 ? <span>1st</span> : <span>2nd</span>} Person turn</h1>
         <h1 className="text-3xl  mb-4">

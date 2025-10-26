@@ -141,11 +141,11 @@ const Pvcomputer = () => {
       {/* 1row */}
       {/* <h1 className="text-3xl ">Human {turn} turn</h1> */}
       {state !== "finish" ? (
-        <h1 className="text-3xl  mb-4">{turn == 1 ? <span>1st</span> : <span>2nd</span>} Person turn</h1>
+        <h1 className="text-3xl  mb-4">Your turn</h1>
       ) : (
           // console.log(winner.current,'--')
           winner.current?<h1 className="text-3xl ">
-            Winner: {turn == 1 ?(<span>2nd Person</span>):<span>1st Person</span>} 
+            {turn == 1 ?(<span>Computer won</span>):<span>You Won</span>} 
           </h1>:
           <h1 className="text-3xl ">
             Draw 
